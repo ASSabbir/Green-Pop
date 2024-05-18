@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import './top.css'
+import Details from './Details';
 const Top = ({ data }) => {
     const [flag, setFlag] = useState(0)
     const { name, image, price, key } = data
@@ -13,11 +14,13 @@ const Top = ({ data }) => {
     // } else {
     //     setFlag(3)
     // }
+
+    
     return (
         <div>
             <div className="max-w-lg   group overflow-hidden  ">
                 <div className='overflow-hidden relative group-hover:bg-black duration-300  '>
-                    <img id='box' src={image} alt="" className="group-hover:scale-150 group-hover:opacity-75 cursor-pointer duration-300 ease-in-out overflow-hidden object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
+                    <img id='box' onClick={<Details ></Details>} src={image} alt="" className="group-hover:scale-150 group-hover:opacity-75 cursor-pointer duration-300 ease-in-out overflow-hidden object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                     {
                         key == 'hot' && <div id='overlay' className='absolute top-3 right-3 bg-green-500 rounded-full w-10 h-10 flex justify-center items-center  z-10'>
                             <h1 className='text-white text-sm font-light '>Hot</h1>
