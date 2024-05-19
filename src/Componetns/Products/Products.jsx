@@ -6,7 +6,7 @@ const Products = () => {
     const [flag, setFlag] = useState(1)
     const data = useLoaderData()
 
-    console.log(flag)
+    console.log(data)
     return (
         <div>
             <div>
@@ -53,7 +53,7 @@ const Products = () => {
                             <div>
                                 {
                                     data.slice(8, 10).map(data => <>
-                                        <div className="w-36 gap-5 pb-3 rounded-md flex   text-gray-900">
+                                        <div key={data.id} className="w-36 gap-5 pb-3 rounded-md flex   text-gray-900">
                                             <img src={data.image} alt="" className="object-cover object-center w-full rounded-md h-44  bg-gray-500" />
                                             <div className="mt-6 mb-2 space-y-2">
                                                 <div className="rating">
@@ -80,13 +80,13 @@ const Products = () => {
                         <h1 className='text-6xl font-bold md:hidden flex font-reemKufi text-center text-gray-600  pb-20'><span className='text-primary'>P</span>roducts</h1>
                         <div className='grid grid-cols-1 px-2 md:grid-cols-3 gap-5'>
                             {flag == 1 &&
-                                data.slice(0, 6).map(data => <Top data={data}></Top>) ||
+                                data.slice(0, 6).map(data => <Top key={data.id} data={data}></Top>) ||
                                 flag == 2 &&
-                                data.slice(6, 12).map(data => <Top data={data}></Top>) ||
+                                data.slice(6, 12).map(data => <Top key={data.id} data={data}></Top>) ||
                                 flag == 3 &&
-                                data.slice(12, 18).map(data => <Top data={data}></Top>) ||
+                                data.slice(12, 18).map(data => <Top key={data.id} data={data}></Top>) ||
                                 flag == 4 &&
-                                data.slice(18, 20).map(data => <Top data={data}></Top>)
+                                data.slice(18, 20).map(data => <Top key={data.id} data={data}></Top>)
                             }
                         </div>
                         <div className='w-full flex items-center justify-center '>
