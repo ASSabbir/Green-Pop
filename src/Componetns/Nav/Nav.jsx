@@ -20,7 +20,7 @@ const Nav = () => {
         </>
     );
     return (
-        <div className="max-w-screen-2xl mx-auto">
+        <div className="max-w-screen-2xl z-10 mx-auto">
             <div className="navbar bg-transparent">
                 <div className="navbar-start">
                     
