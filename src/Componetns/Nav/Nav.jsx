@@ -55,6 +55,7 @@ const Nav = () => {
                     <div className="flex gap-3 items-center ">
                         <CiSearch />
                         <GoPeople />
+                        <Link to={'/login'}><h1>login</h1></Link>
                     </div>
                 </div>
             </div>

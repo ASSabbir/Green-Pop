@@ -8,6 +8,8 @@ import Home from "./Componetns/Home/Home";
 import Products from "./Componetns/Products/Products";
 import Details from "./Componetns/Home/Cards/Details";
 import Abutus from "./Componetns/About us/Abutus";
+import Login from "./Componetns/login/Login";
+import Register from "./Componetns/login/Register";
 
 const router = createBrowserRouter([
   {
@@ -17,21 +19,29 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>,
-        loader:()=> fetch('http://localhost:5000/products')
+        loader:()=> fetch('https://green-pop-server.vercel.app/products')
       },
       {
         path:'/products',
         element:<Products></Products>,
-        loader:()=>fetch('http://localhost:5000/products')
+        loader:()=>fetch('https://green-pop-server.vercel.app/products')
       },
       {
         path:'/plant/:id',
         element:<Details></Details>,
-        loader:({params})=>fetch(`http://localhost:5000/item/${params.id}`)
+        loader:({params})=>fetch(`https://green-pop-server.vercel.app/item/${params.id}`)
       },
       {
         path:'/aboutus',
         element:<Abutus></Abutus>
+      },
+      {
+        path:'/login',
+        element:<Login></Login>
+      },
+      {
+        path:'/signup',
+        element:<Register></Register>
       }
 
     ]
