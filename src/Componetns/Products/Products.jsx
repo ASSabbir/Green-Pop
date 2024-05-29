@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Top from '../Home/Cards/Top';
 // https://i.ibb.co/gmnX7rW/josefin-WS5yj-Fjyc-NY-unsplash.jpg
 const Products = () => {
     const [flag, setFlag] = useState(1)
-    const data = useLoaderData()
+    // const data = useLoaderData()
+    let [data, setData] = useState([])
+    useEffect(() => {
+        fetch('https://green-pop-server.vercel.app/products')
+            .then(res => res.json())
+            .then(json => setData(json))
+    }, [])
 
     console.log(data)
     return (
@@ -76,28 +82,32 @@ const Products = () => {
                     </section>
 
                     {/* section 2  */}
-                    <section className='md:w-[70%]'>
-                        <h1 className='text-6xl font-bold md:hidden flex font-reemKufi text-center text-gray-600  pb-20'><span className='text-primary'>P</span>roducts</h1>
-                        <div className='grid grid-cols-1 px-2 md:grid-cols-3 gap-5'>
-                            {flag == 1 &&
-                                data.slice(0, 6).map(data => <Top key={data.id} data={data}></Top>) ||
-                                flag == 2 &&
-                                data.slice(6, 12).map(data => <Top key={data.id} data={data}></Top>) ||
-                                flag == 3 &&
-                                data.slice(12, 18).map(data => <Top key={data.id} data={data}></Top>) ||
-                                flag == 4 &&
-                                data.slice(18, 20).map(data => <Top key={data.id} data={data}></Top>)
-                            }
-                        </div>
-                        <div className='w-full flex items-center justify-center '>
-                            <div className="join ">
-                                <input onClick={() => setFlag(1)} className={`join-item btn  ${flag == 1 && 'bg-[#3F00E7] text-white'}`} type="radio" name="options" aria-label="1" />
-                                <input onClick={() => setFlag(2)} className="join-item btn btn-square" type="radio" name="options" aria-label="2" />
-                                <input onClick={() => setFlag(3)} className="join-item btn " type="radio" name="options" aria-label="3" />
-                                <input onClick={() => setFlag(4)} className="join-item btn btn-square" type="radio" name="options" aria-label="4" />
-                            </div>
-                        </div>
-                    </section>
+                    {
+                    
+
+                            <section className='md:w-[70%]'>
+                                <h1 className='text-6xl font-bold md:hidden flex font-reemKufi text-center text-gray-600  pb-20'><span className='text-primary'>P</span>roducts</h1>
+                                <div className='grid grid-cols-1 px-2 md:grid-cols-3 gap-5'>
+                                    {flag == 1 &&
+                                        data.slice(0, 6).map(data => <Top key={data.id} data={data}></Top>) ||
+                                        flag == 2 &&
+                                        data.slice(6, 12).map(data => <Top key={data.id} data={data}></Top>) ||
+                                        flag == 3 &&
+                                        data.slice(12, 18).map(data => <Top key={data.id} data={data}></Top>) ||
+                                        flag == 4 &&
+                                        data.slice(18, 20).map(data => <Top key={data.id} data={data}></Top>)
+                                    }
+                                </div>
+                                <div className='w-full flex items-center justify-center '>
+                                    <div className="join ">
+                                        <input onClick={() => setFlag(1)} className={`join-item btn  ${flag == 1 && 'bg-[#3F00E7] text-white'}`} type="radio" name="options" aria-label="1" />
+                                        <input onClick={() => setFlag(2)} className="join-item btn btn-square" type="radio" name="options" aria-label="2" />
+                                        <input onClick={() => setFlag(3)} className="join-item btn " type="radio" name="options" aria-label="3" />
+                                        <input onClick={() => setFlag(4)} className="join-item btn btn-square" type="radio" name="options" aria-label="4" />
+                                    </div>
+                                </div>
+                            </section>
+                    }
                 </section>
             </div>
         </div>

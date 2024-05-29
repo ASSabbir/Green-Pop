@@ -1,11 +1,17 @@
 
 import { useLoaderData } from 'react-router-dom';
 import Top from './Cards/Top';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const MainCard = () => {
     const [flag, setFlag] = useState(true)
-    const datas = useLoaderData()
+    const [datas,setDatas]=useState([])
+    // const datas = useLoaderData()
+    useEffect(()=>{
+        fetch('https://green-pop-server.vercel.app/products')
+        .then(res=>res.json())
+        .then(json=> setDatas(json) )
+    },[])
 
 
     const topDatas = datas.filter(data => data.tags[0] == 'top selling')

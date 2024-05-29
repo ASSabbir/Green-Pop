@@ -1,8 +1,38 @@
 import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { GoPeople } from "react-icons/go";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider";
+import Swal from 'sweetalert2';
 
 const Nav = () => {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+
+
+    const { user, handelLogOut } = useContext(AuthContext)
+    const handellogoutbtn = () => {
+        handelLogOut()
+            .then(result => {
+                console.log(result)
+                Toast.fire({
+                    icon: "success",
+                    title: "Logout successfully"
+                });
+            })
+            .catch(error => {
+
+            })
+    }
     const navber = (
         < >
             <li >
@@ -15,7 +45,7 @@ const Nav = () => {
                 <Link to={"/aboutus"}>NewsFeeds</Link>
             </li>
             <li className="hover:text-primary ">
-                <Link to={"/aboutus"}>UpComing</Link>
+                <Link to={"/upcoming"}>UpComing</Link>
             </li>
         </>
     );
@@ -23,7 +53,7 @@ const Nav = () => {
         <div className="max-w-screen-2xl z-10 mx-auto">
             <div className="navbar bg-transparent">
                 <div className="navbar-start">
-                    
+
                     <div className="drawer lg:hidden">
                         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                         <div className="drawer-content">
@@ -52,10 +82,24 @@ const Nav = () => {
                     <ul className="menu menu-horizontal px-1">{navber}</ul>
                 </div>
                 <div className="navbar-end">
-                    <div className="flex gap-3 items-center ">
-                        <CiSearch />
-                        <GoPeople />
-                        <Link to={'/login'}><h1>login</h1></Link>
+                    <div className="flex gap-2 lg:gap-10 items-center ">
+                        <div className="flex gap-2">
+                            <CiSearch />
+                            <GoPeople />
+                        </div>
+                        {
+                            user ?
+                                <div className="flex items-center gap-3">
+                                    
+                                        <img alt="" className="w-8 h-8 rounded-full ring-2 ring-offset-4 bg-gray-500 ring-gray-300 ring-offset-gray-100" src={user.photoURL} />
+                                    
+
+                                    <button onClick={handellogoutbtn} className="hover:text-primary ">LogOut</button>
+                                </div>
+
+                                :
+                                <Link to={'/login'}><h1 className="hover:text-primary ">login</h1></Link>
+                        }
                     </div>
                 </div>
             </div>

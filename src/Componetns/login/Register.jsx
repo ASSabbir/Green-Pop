@@ -1,7 +1,48 @@
-import React from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../../public/firebase.config';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../AuthProvider';
 
 const Register = () => {
+
+    const {handelRegister}=useContext(AuthContext)
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+
+
+    const handelsignup=e=>{
+        e.preventDefault()
+        const email=e.target.email.value
+        const username=e.target.username.value
+        const pass=e.target.pass.value
+        console.log(email,pass,username)
+        handelRegister(email,pass)
+        .then(result=>{
+            console.log(result.user)
+            Toast.fire({
+                icon: "success",
+                title: "Welcome To Green Pop"
+              });
+        })
+        .catch(error=>{
+            console.log(error.message)
+            Toast.fire({
+                icon: "error",
+                title: error.code
+              });
+        })
+    }
     return (
         <div>
             <div className=' bg-[url("https://i.ibb.co/q9zTxqK/tadeusz-lakota-w-Wd-soca-X9-U-unsplash.jpg")]  absolute blur-sm   h-screen bg-cover bg-center  w-full'></div>
@@ -14,25 +55,25 @@ const Register = () => {
                         </div></figure>
                     <div className="card-body flex-1 items-center">
                         <div className="card shrink-0 w-full  max-w-sm  bg-base-100">
-                            <form className="card-body ">
+                            <form onSubmit={handelsignup} className="card-body ">
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="email" placeholder="email" className="input input-bordered" required />
+                                    <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">User Name</span>
                                     </label>
-                                    <input type="text" placeholder="username" className="input input-bordered" required />
+                                    <input type="text" name='username' placeholder="username" className="input input-bordered" required />
                                     
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" className="input input-bordered" required />
+                                    <input type="password" name='pass' placeholder="password" className="input input-bordered" required />
                                     
                                 </div>
                                 <div className="form-control mt-6">
