@@ -42,7 +42,7 @@ const Nav = () => {
                 <Link to={"/products"}>Products</Link>
             </li>
             <li className="hover:text-primary ">
-                <Link to={"/aboutus"}>NewsFeeds</Link>
+                <Link to={"/aboutus"}>About Us</Link>
             </li>
             <li className="hover:text-primary ">
                 <Link to={"/upcoming"}>UpComing</Link>

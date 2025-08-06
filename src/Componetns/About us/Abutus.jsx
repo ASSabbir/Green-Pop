@@ -1,73 +1,62 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Abutus = () => {
-    return (
-        <section className="bg-gray-100 text-gray-800">
-            <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-                <a rel="noopener noreferrer" href="#" className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 bg-gray-50">
-                    <img src="https://source.unsplash.com/random/480x360" alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 bg-gray-500" />
-                    <div className="p-6 space-y-2 lg:col-span-5">
-                        <h3 className="text-2xl font-semibold sm:text-4xl group-hover:underline group-focus:underline">Noster tincidunt reprimique ad pro</h3>
-                        <span className="text-xs text-gray-600">February 19, 2021</span>
-                        <p>Ei delenit sensibus liberavisse pri. Quod suscipit no nam. Est in graece fuisset, eos affert putent doctus id.</p>
-                    </div>
-                </a>
-                <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    <a rel="noopener noreferrer" href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-gray-50">
-                        <img role="presentation" className="object-cover w-full rounded h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?1" />
-                        <div className="p-6 space-y-2">
-                            <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">In usu laoreet repudiare legendos</h3>
-                            <span className="text-xs text-gray-600">January 21, 2021</span>
-                            <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas percipit perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei vocent delicata indoctum pri.</p>
-                        </div>
-                    </a>
-                    <a rel="noopener noreferrer" href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-gray-50">
-                        <img role="presentation" className="object-cover w-full rounded h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?2" />
-                        <div className="p-6 space-y-2">
-                            <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">In usu laoreet repudiare legendos</h3>
-                            <span className="text-xs text-gray-600">January 22, 2021</span>
-                            <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas percipit perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei vocent delicata indoctum pri.</p>
-                        </div>
-                    </a>
-                    <a rel="noopener noreferrer" href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-gray-50">
-                        <img role="presentation" className="object-cover w-full rounded h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?3" />
-                        <div className="p-6 space-y-2">
-                            <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">In usu laoreet repudiare legendos</h3>
-                            <span className="text-xs text-gray-600">January 23, 2021</span>
-                            <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas percipit perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei vocent delicata indoctum pri.</p>
-                        </div>
-                    </a>
-                    <a rel="noopener noreferrer" href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-gray-50 hidden sm:block">
-                        <img role="presentation" className="object-cover w-full rounded h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?4" />
-                        <div className="p-6 space-y-2">
-                            <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">In usu laoreet repudiare legendos</h3>
-                            <span className="text-xs text-gray-600">January 24, 2021</span>
-                            <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas percipit perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei vocent delicata indoctum pri.</p>
-                        </div>
-                    </a>
-                    <a rel="noopener noreferrer" href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-gray-50 hidden sm:block">
-                        <img role="presentation" className="object-cover w-full rounded h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?5" />
-                        <div className="p-6 space-y-2">
-                            <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">In usu laoreet repudiare legendos</h3>
-                            <span className="text-xs text-gray-600">January 25, 2021</span>
-                            <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas percipit perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei vocent delicata indoctum pri.</p>
-                        </div>
-                    </a>
-                    <a rel="noopener noreferrer" href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-gray-50 hidden sm:block">
-                        <img role="presentation" className="object-cover w-full rounded h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?6" />
-                        <div className="p-6 space-y-2">
-                            <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">In usu laoreet repudiare legendos</h3>
-                            <span className="text-xs text-gray-600">January 26, 2021</span>
-                            <p>Mei ex aliquid eleifend forensibus, quo ad dicta apeirian neglegentur, ex has tantas percipit perfecto. At per tempor albucius perfecto, ei probatus consulatu patrioque mea, ei vocent delicata indoctum pri.</p>
-                        </div>
-                    </a>
-                </div>
-                <div className="flex justify-center">
-                    <button type="button" className="px-6 py-3 text-sm rounded-md hover:underline bg-gray-50 text-gray-600">Load more posts...</button>
-                </div>
-            </div>
-        </section>
-    );
+const AboutUs = () => {
+  return (
+    <section className="bg-white text-gray-800 py-12">
+      <div className="max-w-6xl mx-auto px-4 space-y-12">
+        {/* Top Section */}
+        <div className="flex flex-col lg:flex-row items-center gap-10">
+          <img
+            src="https://i.ibb.co/gmnX7rW/josefin-WS5yj-Fjyc-NY-unsplash.jpg"
+            alt="Green Pop"
+            className="w-full lg:w-1/2 h-80 object-cover rounded-xl shadow-md"
+          />
+          <div className="flex-1 space-y-4">
+            <h2 className="text-4xl font-bold">About Green Pop 🌿</h2>
+            <p className="text-lg text-gray-600">
+              Green Pop is your go-to destination for vibrant, healthy, and sustainable green plants.
+              Whether you're a seasoned plant lover or just starting your indoor jungle, we’ve got something for you. Our carefully selected plants are delivered with care, love, and expert guidance.
+            </p>
+            <p className="text-md text-gray-500">
+              From indoor air-purifiers to outdoor bloomers, Green Pop helps you connect with nature right at home.
+            </p>
+          </div>
+        </div>
+
+        {/* Our Mission, Vision Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="bg-green-100 p-6 rounded-lg shadow">
+            <h3 className="text-2xl font-semibold mb-2">🌱 Our Mission</h3>
+            <p className="text-gray-700">
+              To make plant ownership accessible, enjoyable, and meaningful for everyone.
+            </p>
+          </div>
+          <div className="bg-green-100 p-6 rounded-lg shadow">
+            <h3 className="text-2xl font-semibold mb-2">🌿 Our Vision</h3>
+            <p className="text-gray-700">
+              A greener planet, one plant at a time — creating eco-conscious homes worldwide.
+            </p>
+          </div>
+          <div className="bg-green-100 p-6 rounded-lg shadow">
+            <h3 className="text-2xl font-semibold mb-2">🌎 Sustainability</h3>
+            <p className="text-gray-700">
+              We partner with local growers and use eco-friendly packaging to protect both your plants and the planet.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center">
+          <NavLink to={'/products'}>
+            <button className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md transition">
+            Explore Our Plants
+          </button>
+          </NavLink>
+        </div>
+      </div>
+    </section>
+  );
 };
 
-export default Abutus;
+export default AboutUs;

@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+
 import Top from '../Home/Cards/Top';
+import axios from 'axios';
 // https://i.ibb.co/gmnX7rW/josefin-WS5yj-Fjyc-NY-unsplash.jpg
 const Products = () => {
     const [flag, setFlag] = useState(1)
-    // const data = useLoaderData()
+    
     let [data, setData] = useState([])
+    const [count, setCount] = useState(0)
+    const [activePage, setActivePage] = useState(0)
     useEffect(() => {
-        fetch('https://green-pop-server.vercel.app/products')
+        axios.get('http://localhost:5000/count')
+            .then(res => setCount(res.data.count))
+    }, [])
+    useEffect(() => {
+        fetch(`http://localhost:5000/products?limit=6&skip=${activePage}`)
             .then(res => res.json())
             .then(json => setData(json))
-    }, [])
+    }, [activePage])
+    const numberOfPage = Math.ceil(count / 6)
+    const pages = [...Array(numberOfPage).keys()]
+   
 
-    console.log(data)
     return (
         <div>
             <div>
@@ -58,8 +67,8 @@ const Products = () => {
                             <h1 className='text-3xl font-bold pb-5'>Feature Product</h1>
                             <div>
                                 {
-                                    data.slice(8, 10).map(data => <>
-                                        <div key={data.id} className="w-36 gap-5 pb-3 rounded-md flex   text-gray-900">
+                                    data.slice(8, 10).map((data, index) => <>
+                                        <div key={index} className="w-36 gap-5 pb-3 rounded-md flex   text-gray-900">
                                             <img src={data.image} alt="" className="object-cover object-center w-full rounded-md h-44  bg-gray-500" />
                                             <div className="mt-6 mb-2 space-y-2">
                                                 <div className="rating">
@@ -83,30 +92,31 @@ const Products = () => {
 
                     {/* section 2  */}
                     {
-                    
 
-                            <section className='md:w-[70%]'>
-                                <h1 className='text-6xl font-bold md:hidden flex font-reemKufi text-center text-gray-600  pb-20'><span className='text-primary'>P</span>roducts</h1>
-                                <div className='grid grid-cols-1 px-2 md:grid-cols-3 gap-5'>
-                                    {flag == 1 &&
-                                        data.slice(0, 6).map(data => <Top key={data.id} data={data}></Top>) ||
-                                        flag == 2 &&
-                                        data.slice(6, 12).map(data => <Top key={data.id} data={data}></Top>) ||
-                                        flag == 3 &&
-                                        data.slice(12, 18).map(data => <Top key={data.id} data={data}></Top>) ||
-                                        flag == 4 &&
-                                        data.slice(18, 20).map(data => <Top key={data.id} data={data}></Top>)
+
+                        <section className='md:w-[70%] md:h-[100%]'>
+
+                            <h1 className='text-6xl font-bold md:hidden flex font-reemKufi text-center text-gray-600  pb-20'> <span className='text-primary'>P</span>roducts</h1>
+                            <div className='grid grid-cols-1 px-2 md:grid-cols-3 gap-5'>
+                                {
+                                    data.map(data => <Top key={data.id} data={data}></Top>)
+                                }
+
+                            </div>
+                            <div className='w-full flex items-center justify-center mb-10'>
+                                
+                                <div className="flex justify-center space-x-1 dark:text-gray-800">
+                                    {
+                                        pages.map(page=>(
+                                             <button key={page} onClick={()=>setActivePage(page)} className={`inline-flex items-center justify-center w-10 h-10 text-sm font-semibold border  ${activePage==page? 'bg-primary text-white shadow-md':'bg-white border-primary text-primary'} rounded shadow-md `}>{page}</button>
+                                        ))
                                     }
+
+                                   
+                                    
                                 </div>
-                                <div className='w-full flex items-center justify-center '>
-                                    <div className="join ">
-                                        <input onClick={() => setFlag(1)} className={`join-item btn  ${flag == 1 && 'bg-[#3F00E7] text-white'}`} type="radio" name="options" aria-label="1" />
-                                        <input onClick={() => setFlag(2)} className="join-item btn btn-square" type="radio" name="options" aria-label="2" />
-                                        <input onClick={() => setFlag(3)} className="join-item btn " type="radio" name="options" aria-label="3" />
-                                        <input onClick={() => setFlag(4)} className="join-item btn btn-square" type="radio" name="options" aria-label="4" />
-                                    </div>
-                                </div>
-                            </section>
+                            </div>
+                        </section>
                     }
                 </section>
             </div>
